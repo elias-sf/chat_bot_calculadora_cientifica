@@ -1,0 +1,3 @@
+ignore:
+  - "src/main/java/com/deriv/parser"
+  - "src/main/java/com/deriv/server"

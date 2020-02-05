@@ -1,0 +1,49 @@
+/* Our expression language */
+
+//package com.deriv.parser;
+//
+//import com.deriv.expression.Expression;
+//import static com.deriv.expression.Log.*;
+//import static com.deriv.expression.Mult.*;
+//import static com.deriv.expression.Add.*;
+//import static com.deriv.expression.Constant.*;
+//import static com.deriv.expression.Trig.*;
+//import static com.deriv.expression.Variable.*;
+//import static com.deriv.expression.Power.*;
+
+/* Terminals (tokens returned by the scanner). */
+terminal                    PLUS, MINUS, TIMES, LPAREN, RPAREN, LBRACK, RBRACK, DIVIDE;
+terminal                    CARROT, LN, LOG, SQRT, COMMA, ECON;
+terminal String             VARIABLE, TRIG;
+terminal Integer            NUMBER;
+
+/* Non terminals */
+non terminal Expression     expr, term, factor, _base;
+
+/* Grammar Definition */
+expr    ::= expr:e PLUS term:t                          {: RESULT = add(e, t); :}
+        | expr:e MINUS term:t                           {: RESULT = add(e, negate(t)); :}
+        | term:t                                        {: RESULT = t; :}
+        ;
+term    ::= term:t TIMES factor:f                       {: RESULT = mult(t, f); :}
+        | term:t factor:f                               {: RESULT = mult(t, f); :} // implicit multiplication
+        | term:t DIVIDE factor:f                        {: RESULT = div(t, f); :}
+        | MINUS factor:f                                {: RESULT = negate(f); :} // implicit negation
+        | factor:f                                      {: RESULT = f; :}
+        ;
+factor  ::= _base:b CARROT factor:f                      {: RESULT = power(b, f); :} // right associative
+        | _base:b CARROT MINUS factor:f                  {: RESULT = power(b, negate(f)); :} // important check
+        | _base:b                                        {: RESULT = b; :}
+        ;
+
+_base    ::= NUMBER:n                                    {: RESULT = constant(n); :}
+        | ECON                                          {: RESULT = e(); :} // e constant
+        | VARIABLE:x                                    {: RESULT = _var(x); :}
+        | LPAREN expr:e RPAREN                          {: RESULT = e; :}
+        | LBRACK expr:e RBRACK                          {: RESULT = e; :}
+        | TRIG:t LPAREN expr:e RPAREN                   {: RESULT = trig(t, e); :}
+        | LN LPAREN expr:e RPAREN                       {: RESULT = ln(e); :}
+        | LOG LPAREN expr:e RPAREN                      {: RESULT = log(constant(10), e); :}
+        | SQRT LPAREN expr:e RPAREN                     {: RESULT = power(e, div(multID(), constant(2))); :}
+        | LOG LPAREN expr:e1 COMMA expr:e2 RPAREN       {: RESULT = log(e1, e2); :}
+        ;
