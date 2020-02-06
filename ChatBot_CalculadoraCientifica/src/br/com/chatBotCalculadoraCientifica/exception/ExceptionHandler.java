@@ -11,12 +11,5 @@ public class ExceptionHandler extends Throwable implements UncaughtExceptionHand
 	public void uncaughtException(Thread t, Throwable e) {
 		LOGGER.severe("[ERRO] Ocorreu um erro ao processar a  thread: " + t.getName() + ", " + e.getMessage());
 		e.printStackTrace();
-	}
-	
-//	public void ErroCarregarMenuException(String message) {
-//		LOGGER.severe(message);
-//	}
-//	
-	
-
+	}	
 }

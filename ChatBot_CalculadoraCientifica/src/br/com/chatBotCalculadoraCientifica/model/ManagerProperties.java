@@ -4,13 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Properties;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import br.com.chatBotCalculadoraCientifica.controller.ControllerBot;
 
 /**
  * classe que gerências as leituras dos arquivos de propriedades
@@ -44,8 +40,7 @@ public abstract class ManagerProperties {
 		Hashtable<String, String> mapaMenu = new Hashtable<>();
 		try {
 			carregarPropriedades("config/menu/menu.properties");
-			mapaMenu.put("apresentacao", props.getProperty("bot.menu.apresentacao"));
-			mapaMenu.put("menu", props.getProperty("bot.menu.comando"));
+			mapaMenu.put("menu", props.getProperty("bot.menu.comandos"));
 			mapaMenu.put("/CB", props.getProperty("bot.menu.calculo.diverso"));
 			mapaMenu.put("/CVD", props.getProperty("bot.menu.derivada.valor"));
 			mapaMenu.put("/CSD", props.getProperty("bot.menu.derivada.simbolica"));
