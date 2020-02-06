@@ -23,20 +23,18 @@ public class ObjectFactory implements ThreadFactory {
 
 	private static TelegramBot bot;
 	private static final Logger LOGGER = Logger.getGlobal();
-	private ThreadFactory defaultFactory;
+//	private ThreadFactory defaultFactory;
 	private static int numero;
 
-
 	public ObjectFactory() {
-		
+
 	}
-	
-	public ObjectFactory(ThreadFactory defaultFactory) {
-		this.defaultFactory = defaultFactory;
-	}
+
+//	public ObjectFactory(ThreadFactory defaultFactory) {
+//		this.defaultFactory = defaultFactory;
+//	}
 
 	public TelegramBot getBotInstance() {
-
 
 		LOGGER.info("[INICIO] fabricando instancia do bot");
 
@@ -49,16 +47,22 @@ public class ObjectFactory implements ThreadFactory {
 			e.printStackTrace();
 		}
 
-		LOGGER.info( "[FIM] fabricando instancia do bot");
+		LOGGER.info("[FIM] fabricando instancia do bot");
 
 		return bot;
 	}
 
 	@Override
 	public Thread newThread(Runnable tarefa) {
-		LOGGER.log(Level.INFO, "=============[INICIO] fabricando instancia da thread - Inicia a fábrica===================");
+		LOGGER.log(Level.INFO,
+				"=============[INICIO] fabricando instancia da thread - Inicia a fábrica===================");
 		// criando uma thread usando para fabrica padrão
 		Thread thread = new Thread(tarefa, "Thread Task User-" + numero);
+//		if ((numero % 2) == 0) {
+//			thread.setPriority(Thread.MAX_PRIORITY);
+//		} else {
+//			thread.setPriority(Thread.NORM_PRIORITY);
+//		}
 		// personalizando a thread, colocando exceções que podem ocorrer com outras
 		// treads e vincular ao método main
 		numero++;

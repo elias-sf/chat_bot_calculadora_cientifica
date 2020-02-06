@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Level;
@@ -37,7 +38,7 @@ public class ControllerBot {
 	private ExecutorService threadPool;
 	private Hashtable<String, String> mapaMenu;
 	private Lock lock = new ReentrantLock();
-
+	private static boolean inicializarBot = false;
 
 	public ControllerBot() {
 
@@ -46,13 +47,14 @@ public class ControllerBot {
 		this.bot = new ObjectFactory().getBotInstance();
 		// Passa o bot para o gerenciamento do controllerBotMessage
 		ControllerBotMessage.setBotForReading(this.bot);
-		ControllerBotMessage.setOffset(0);
-		//List<Update> updates = bot.execute(new GetUpdates().limit(100).offset(0)).updates();
 
-//		if (updates != null || !updates.isEmpty()) {
-//			//ControllerBotMessage.nextOffset(updates.get((updates.size()) - 1));
-//			ControllerBotMessage.nextOffset(updates.get((updates.size())));
-//		}
+		// List<Update> updates = bot.execute(new
+		// GetUpdates().limit(100).offset(0)).updates();
+
+		// if (updates != null || !updates.isEmpty()) {
+		// //ControllerBotMessage.nextOffset(updates.get((updates.size()) - 1));
+		// ControllerBotMessage.nextOffset(updates.get((updates.size())));
+		// }
 
 		LOGGER.info("[FIM] Bot inicializado");
 	}
@@ -61,39 +63,43 @@ public class ControllerBot {
 
 		// implementar o mapa
 		this.mapaMenu = ManagerProperties.menu();
+		ControllerBotMessage.setOffset(0);
+		ControllerBotMessage.setMapaMenu(this.mapaMenu);
 
-		ThreadFactory defaultFactory = Executors.defaultThreadFactory();
+		// ThreadFactory defaultFactory = Executors.defaultThreadFactory();
 
-		this.threadPool = Executors.newCachedThreadPool( new ObjectFactory(defaultFactory));
+		// ObjectFactory factory = new ObjectFactory(defaultFactory);
+		ObjectFactory factory = new ObjectFactory();
+		this.threadPool = Executors.newCachedThreadPool(factory);
 
-		
 		while (true) {
-			
+
 			List<Update> updates = ControllerBotMessage.getUpdates();
+
 			updates.stream().forEach(update -> {
-				
+				if (!inicializarBot) {
+					ControllerBotMessage.sendMessage(
+							"Bem vindo ao chat bot da calculado científica," + "para começar digite: 'menu'",
+							updates.get(0));
+					inicializarBot = true;
+
+				}
 				ControllerBotMessage.nextOffset(update);
-				//this.lock.lock();
+				// this.lock.lock();
 				ControlleThread controllerThread = new ControlleThread(update, mapaMenu);
 				threadPool.execute(controllerThread);
-//				try {
-//					controllerThread.wait();
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-				//this.lock.unlock();
-				
+
 			});
-			
+
 		}
 
 	}
 
-//	public Runnable inicializaThread(Update update, Hashtable<String, String> mapaMenu) {
-//
-//		ControlleThread controlleThread = new ControlleThread(update, mapaMenu);
-//		return controlleThread;
-//	}
+	// public Runnable inicializaThread(Update update, Hashtable<String, String>
+	// mapaMenu) {
+	//
+	// ControlleThread controlleThread = new ControlleThread(update, mapaMenu);
+	// return controlleThread;
+	// }
 
 }

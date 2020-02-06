@@ -44,12 +44,13 @@ public abstract class ManagerProperties {
 		Hashtable<String, String> mapaMenu = new Hashtable<>();
 		try {
 			carregarPropriedades("config/menu/menu.properties");
-			mapaMenu.put("menu", props.getProperty("bot.menu.apresentacao"));
+			mapaMenu.put("apresentacao", props.getProperty("bot.menu.apresentacao"));
+			mapaMenu.put("menu", props.getProperty("bot.menu.comando"));
 			mapaMenu.put("/CB", props.getProperty("bot.menu.calculo.diverso"));
 			mapaMenu.put("/CVD", props.getProperty("bot.menu.derivada.valor"));
 			mapaMenu.put("/CSD", props.getProperty("bot.menu.derivada.simbolica"));
 			mapaMenu.put("/CVI", props.getProperty("bot.menu.integral.valor"));
-			mapaMenu.put("/Ajuda", props.getProperty("bot.mune.ajuda"));
+			mapaMenu.put("/Ajuda", props.getProperty("bot.menu.ajuda"));
 			return mapaMenu;
 		} catch (IOException e) {
 			LOGGER.severe("Erro a carregar o menu, verifique o caminho ou arquivo de propriedade do token");
@@ -60,7 +61,7 @@ public abstract class ManagerProperties {
 
 	}
 
-	public File carregarImagem() {
+	public static File carregarImagem() {
 		File arquivoImagem = new File("config/image/tabela_calculo.png");
 		return arquivoImagem;
 

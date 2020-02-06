@@ -6,16 +6,18 @@ import java.util.Base64;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.apache.commons.io.FileUtils;
-import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.model.request.ChatAction;
+import com.pengrad.telegrambot.model.request.Keyboard;
+import com.pengrad.telegrambot.model.request.ReplyKeyboardMarkup;
+import com.pengrad.telegrambot.request.BaseRequest;
 import com.pengrad.telegrambot.request.GetUpdates;
 import com.pengrad.telegrambot.request.SendChatAction;
+import com.pengrad.telegrambot.request.SendDocument;
 import com.pengrad.telegrambot.request.SendMessage;
-
+import com.pengrad.telegrambot.request.SendPhoto;
 import com.pengrad.telegrambot.response.BaseResponse;
 import com.pengrad.telegrambot.response.GetUpdatesResponse;
 import com.pengrad.telegrambot.response.SendResponse;
@@ -57,7 +59,7 @@ public class MainTeste {
 						baseResponse = bot.execute(new SendChatAction(update.message().chat().id(), ChatAction.typing.name()));
 						//verificação de ação de chat foi enviada com sucesso
 						
-						if("imagem".equals(update.message().text())) {
+						if("i".equals(update.message().text())) {
 							
 //							Base64.encode(FileUtils.readFileToByteArray(new File("config/image/tabela_calculo.png")));
 //							
@@ -65,23 +67,26 @@ public class MainTeste {
 //							
 //							File arquivoImagem = new File("config/image/tabela_calculo.png");
 							
-							SendPhoto send = new SendPhoto().setChatId("@calculadora_cientifica_bot")
-							.setPhoto(new File("config/image/tabela_calculo.png"))
-							.setCaption("Teste");
-							
-						
+//							SendPhoto send = new SendPhoto().setChatId("@calculadora_cientifica_bot")
+//							.setPhoto(new File("config/image/tabela_calculo.png"))
+//							.setCaption("Teste");
+//							
+//							//sendResponse = bot.execute(new SendMessage(send,"hai"));
+//							SendDocument dc = new SendDocument("@calculadora_cientifica_bot", new File("config/image/tabela_calculo.png"));
+//							bot.execute(send);
+//							
 							
 //							SendPhoto send = new SendPhoto("@calculadora_cientifica_bot",
 //									FileUtils.readFileToByteArray(new File("config/image/tabela_calculo.png"))).
 //							caption("teste");
 							
+						bot.execute(new SendPhoto(update.message().chat().id(), new File("config/image/tabela_calculo.png")));
 							
 							//sendResponse = bot.execute(new SendMessage(update.message().chat().id(),send));
 							
 						}
 						
 						System.out.println("Resposta de Chat Action Enviada?" + baseResponse.isOk());
-						
 						//envio da mensagem de resposta
 						sendResponse = bot.execute(new SendMessage(update.message().chat().id(),"Não foi"));
 						//verificação de mensagem enviada com sucesso

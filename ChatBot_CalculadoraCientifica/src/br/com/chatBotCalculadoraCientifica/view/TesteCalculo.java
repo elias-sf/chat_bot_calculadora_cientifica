@@ -1,8 +1,10 @@
 package br.com.chatBotCalculadoraCientifica.view;
 
+import java.util.Scanner;
+
 import org.mariuszgromada.math.mxparser.Argument;
 import org.mariuszgromada.math.mxparser.Expression;
-
+import org.reflections.vfs.SystemFile;
 
 import com.deriv.calculator.Calculator;
 
@@ -25,11 +27,17 @@ import com.deriv.calculator.Calculator;
 public class TesteCalculo {
 
 	public static void main(String[] args) throws Exception {
-		
+//		Scanner sc1 = new Scanner(System.in);
+//		String p = sc1.nextLine();
 //		// soma
-//		Expression e = new Expression("2+3+4");
-//		System.out.println("Resultado " + e.calculate());
-//		
+//		try {
+//			
+//			Expression e = new Expression("p");
+//			System.out.println("Resultado " + e.calculate());
+//			
+//		} catch (Exception e) {
+//			System.out.println("erro");
+//		}
 //		//subtracao
 //		Expression e1 = new Expression("2-3-4");
 //		System.out.println("Resultado " + e1.calculate());
@@ -79,12 +87,22 @@ public class TesteCalculo {
 		
 
 		
-		Calculator calc = new Calculator();
-		String a = calc.differentiate("ln(x^2)/e^(x^2) + (3*x)^4x", "x").get().toString();
-		System.out.println(a);
+		//Calculator calc = new Calculator();
+		//String a = calc.differentiate("ln(x^2)/e^(x^2) + (3*x)^4x", "x").get().toString();
+		//System.out.println(calc.differentiate("ln(S^2)/e^(x^2) + (3*x)^4x", "x").get().toString());
+		//System.out.println(calc.differentiate("A", "x").get().toString());
+		//System.out.println(calc.differentiate("uiashida", "x").get().toString());
+		//System.out.println(calc.differentiate("*", "x").get().toString());
 		
-		Calculator calc2 = new Calculator();
-		String a1 = calc2.differentiate("ln(x^2) + tan(3*x^4) + 2", "x").get().toString();
-		System.out.println(a1);
+		try {
+			
+			Calculator calc2 = new Calculator();
+			//String a1 = calc2.differentiate("tan(2*x^3)+cos(2*x^8)+tan(x^2)", "x").get().toLaTex();
+			System.out.println(calc2.differentiate("tan(2*c^3)", "x").get().toString());
+			//System.out.println(a1);
+			//System.out.println(calc2.differentiate("ln(x^2)", "x").get().toString());
+		} catch (Exception e1) {
+			System.err.println("Erro");
+		}
 	}
 }

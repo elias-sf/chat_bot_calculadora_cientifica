@@ -1,6 +1,8 @@
 package br.com.chatBotCalculadoraCientifica.controller;
 
+import java.io.File;
 import java.util.Collections;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +17,7 @@ import com.pengrad.telegrambot.model.request.ParseMode;
 import com.pengrad.telegrambot.request.GetUpdates;
 import com.pengrad.telegrambot.request.SendChatAction;
 import com.pengrad.telegrambot.request.SendMessage;
+import com.pengrad.telegrambot.request.SendPhoto;
 import com.pengrad.telegrambot.response.BaseResponse;
 import com.pengrad.telegrambot.response.SendResponse;
 
@@ -27,12 +30,13 @@ public abstract class ControllerBotMessage {
 	private static BaseResponse baseResponse;
 	private static TelegramBot botForReading;
 	private static int offset;
+	private static Hashtable<String, String> mapaMenu;
+	
 	
 	
 	public static void sendMessage(String message, Update update) {
-		if("�".equals(message) || "NaN".equals(message)) {
-			message = "Erro a executar o calculo, por favor reveja a equação \n \n ";
-		}
+		
+		                
 		sendMessage(message, update, new ForceReply());
 	}
 
@@ -57,19 +61,19 @@ public abstract class ControllerBotMessage {
 		}
 	}
 
-	public static Update readAnswer(Update update) {
+	public synchronized static Update readAnswer(Update update) {
 		System.out.println("Entrei no recebeMensagem");
 		nextOffset(update);
 		List<Update> answerUpdates = null;
 		while (answerUpdates == null || answerUpdates.isEmpty()) {
 			answerUpdates = getUpdates();
 		}
-		System.out.println("ACHADO =========== " + answerUpdates.get(0));
+		//System.out.println("ACHADO =========== " + answerUpdates.get(0));
 		return answerUpdates.get(0);
 	}
 
 	public static void nextOffset(Update update) {
-		System.out.println("OFFESET " + offset);
+		//System.out.println("OFFESET " + offset);
 		offset = update.updateId() + 1;
 	}
 
@@ -81,7 +85,12 @@ public abstract class ControllerBotMessage {
 
 		updates = botForReading.execute(new GetUpdates().limit(100).offset(offset)).updates();
 
-		System.out.println(updates);
+		//String qtd = String.valueOf(updates.size());
+		
+//		Integer qtd = updates.size();
+//		
+//		System.out.println("QTD MSG REC: " + qtd.toString());
+		//System.out.println(updates);
 
 		// if(updates.isEmpty())
 
@@ -104,6 +113,11 @@ public abstract class ControllerBotMessage {
 		// return updates;
 
 	}
+	
+	public static void enviarFoto(Update update, File arquivoFoto) {
+		botForReading.execute(new SendPhoto(update.message().chat().id(), 
+				arquivoFoto));
+	}
 
 	public static TelegramBot getBotForReading() {
 		return botForReading;
@@ -117,7 +131,12 @@ public abstract class ControllerBotMessage {
 		offset = valor;
 	}
 
-	// public static int getOffset () {
-	// return offset;
-	// }
+	public static Hashtable<String, String> getMapaMenu() {
+		return mapaMenu;
+	}
+
+	public static void setMapaMenu(Hashtable<String, String> mapaMenuCarregado) {
+		mapaMenu = mapaMenuCarregado;
+	}
+
 }
