@@ -5,9 +5,9 @@ import com.pengrad.telegrambot.request.SendPhoto;
 
 public class ManagerBotImage {
 
-	private SendPhoto photo;
-	
-	public void sendPhoto(Update update) {
-		
-	}
+    private SendPhoto photo;
+
+    public void sendPhoto(Update update) {
+
+    }
 }
