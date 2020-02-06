@@ -1,6 +1,6 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
-*.log
+
 
 ### STS ###
 .apt_generated
@@ -33,7 +33,7 @@ target/
 *.war
 *.ear
 /log.dir_IS_UNDEFINED/
-*.log
+
 
 ### Windows thumbnails ###
 Thumbs.db
