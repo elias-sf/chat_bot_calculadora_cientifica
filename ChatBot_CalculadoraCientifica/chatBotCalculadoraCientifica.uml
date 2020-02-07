@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>br.com.chatBotCalculadoraCientifica</OriginalElement>
+  <nodes>
+    <node x="124.5" y="981.0">br.com.chatBotCalculadoraCientifica.model.CalculatorBot</node>
+    <node x="969.1639784946237" y="0.0">br.com.chatBotCalculadoraCientifica.view.TesteCalculo</node>
+    <node x="260.75806451612897" y="506.0">br.com.chatBotCalculadoraCientifica.controller.ControllerBotMessage</node>
+    <node x="775.1639784946236" y="0.0">br.com.chatBotCalculadoraCientifica.view.MainTeste</node>
+    <node x="331.01612903225805" y="1816.0">br.com.chatBotCalculadoraCientifica.controller.ControllerBot</node>
+    <node x="447.1639784946236" y="44.0">br.com.chatBotCalculadoraCientifica.exception.ExceptionHandler</node>
+    <node x="173.34946236559136" y="1575.0">br.com.chatBotCalculadoraCientifica.controller.ControlleThread</node>
+    <node x="435.6639784946236" y="233.0">br.com.chatBotCalculadoraCientifica.model.ObjectFactory</node>
+    <node x="381.51612903225805" y="2069.0">br.com.chatBotCalculadoraCientifica.view.MainBot</node>
+    <node x="122.50806451612897" y="1212.0">br.com.chatBotCalculadoraCientifica.controller.ControllerTask</node>
+    <node x="0.0" y="0.0">br.com.chatBotCalculadoraCientifica.model.ManagerProperties</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="br.com.chatBotCalculadoraCientifica.controller.ControllerTask" target="br.com.chatBotCalculadoraCientifica.model.CalculatorBot">
+      <point x="-36.5" y="-156.5" />
+      <point x="232.00806451612897" y="1187.0" />
+      <point x="195.0" y="1187.0" />
+      <point x="-70.5" y="90.5" />
+    </edge>
+    <edge source="br.com.chatBotCalculadoraCientifica.controller.ControllerTask" target="br.com.chatBotCalculadoraCientifica.controller.ControllerBotMessage">
+      <point x="109.5" y="-156.5" />
+      <point x="378.00806451612897" y="1187.0" />
+      <point x="443.34408602150535" y="1187.0" />
+      <point x="443.34408602150535" y="961.0" />
+      <point x="371.75806451612897" y="961.0" />
+      <point x="-37.0" y="212.5" />
+    </edge>
+    <edge source="br.com.chatBotCalculadoraCientifica.model.ObjectFactory" target="br.com.chatBotCalculadoraCientifica.model.ManagerProperties">
+      <point x="-51.0" y="-111.5" />
+      <point x="486.6639784946236" y="208.0" />
+      <point x="190.0" y="208.0" />
+      <point x="76.0" y="91.5" />
+    </edge>
+    <edge source="br.com.chatBotCalculadoraCientifica.controller.ControllerTask" target="br.com.chatBotCalculadoraCientifica.model.ManagerProperties">
+      <point x="-109.5" y="-156.5" />
+      <point x="159.00806451612897" y="1187.0" />
+      <point x="106.43279569892468" y="1187.0" />
+      <point x="106.43279569892468" y="208.0" />
+      <point x="114.0" y="208.0" />
+      <point x="0.0" y="91.5" />
+    </edge>
+    <edge source="br.com.chatBotCalculadoraCientifica.controller.ControllerBot" target="br.com.chatBotCalculadoraCientifica.controller.ControlleThread">
+      <point x="-20.83333333333337" y="-101.5" />
+      <point x="435.1827956989247" y="1796.0" />
+      <point x="417.84946236559136" y="1796.0" />
+      <point x="81.5" y="90.5" />
+    </edge>
+    <edge source="br.com.chatBotCalculadoraCientifica.view.MainBot" target="br.com.chatBotCalculadoraCientifica.controller.ControllerBot">
+      <point x="37.25" y="-26.5" />
+      <point x="493.26612903225805" y="2044.0" />
+      <point x="518.516129032258" y="2044.0" />
+      <point x="62.5" y="101.5" />
+    </edge>
+    <edge source="br.com.chatBotCalculadoraCientifica.controller.ControllerBot" target="br.com.chatBotCalculadoraCientifica.model.ObjectFactory">
+      <point x="62.499999999999986" y="-101.5" />
+      <point x="518.516129032258" y="1786.0" />
+      <point x="567.258064516129" y="1786.0" />
+      <point x="567.258064516129" y="481.0" />
+      <point x="537.6639784946236" y="481.0" />
+      <point x="0.0" y="111.5" />
+    </edge>
+    <edge source="br.com.chatBotCalculadoraCientifica.controller.ControlleThread" target="br.com.chatBotCalculadoraCientifica.controller.ControllerBotMessage">
+      <point x="108.66666666666669" y="-90.5" />
+      <point x="445.01612903225805" y="1550.0" />
+      <point x="454.34408602150535" y="1550.0" />
+      <point x="454.34408602150535" y="951.0" />
+      <point x="445.75806451612897" y="951.0" />
+      <point x="37.0" y="212.5" />
+    </edge>
+    <edge source="br.com.chatBotCalculadoraCientifica.controller.ControllerBotMessage" target="br.com.chatBotCalculadoraCientifica.model.ObjectFactory">
+      <point x="5.6843418860808015E-14" y="-212.5" />
+      <point x="408.758064516129" y="481.0" />
+      <point x="469.6639784946236" y="481.0" />
+      <point x="-68.0" y="111.5" />
+    </edge>
+    <edge source="br.com.chatBotCalculadoraCientifica.controller.ControllerBot" target="br.com.chatBotCalculadoraCientifica.controller.ControllerBotMessage">
+      <point x="20.833333333333314" y="-101.5" />
+      <point x="476.84946236559136" y="1776.0" />
+      <point x="515.008064516129" y="1776.0" />
+      <point x="515.008064516129" y="961.0" />
+      <point x="519.758064516129" y="961.0" />
+      <point x="111.00000000000007" y="212.5" />
+    </edge>
+    <edge source="br.com.chatBotCalculadoraCientifica.controller.ControlleThread" target="br.com.chatBotCalculadoraCientifica.controller.ControllerTask">
+      <point x="0.0" y="-90.5" />
+      <point x="336.34946236559136" y="1550.0" />
+      <point x="341.50806451612897" y="1550.0" />
+      <point x="73.0" y="156.5" />
+    </edge>
+    <edge source="br.com.chatBotCalculadoraCientifica.model.CalculatorBot" target="br.com.chatBotCalculadoraCientifica.controller.ControllerBotMessage">
+      <point x="0.0" y="-90.5" />
+      <point x="265.5" y="961.0" />
+      <point x="297.75806451612897" y="961.0" />
+      <point x="-111.0" y="212.5" />
+    </edge>
+    <edge source="br.com.chatBotCalculadoraCientifica.model.ObjectFactory" target="br.com.chatBotCalculadoraCientifica.exception.ExceptionHandler">
+      <point x="51.0" y="-111.5" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="br.com.chatBotCalculadoraCientifica.controller.ControllerBot" target="br.com.chatBotCalculadoraCientifica.model.ManagerProperties">
+      <point x="-104.16666666666663" y="-101.5" />
+      <point x="351.8494623655914" y="1796.0" />
+      <point x="85.0" y="1796.0" />
+      <point x="85.0" y="208.0" />
+      <point x="38.0" y="208.0" />
+      <point x="-76.0" y="91.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7000000000000001" x="450.2857142857142" y="378.57142857142856" />
+  <SelectedNodes>
+    <node>br.com.chatBotCalculadoraCientifica.model.ManagerProperties</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
