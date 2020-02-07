@@ -1,11 +1,10 @@
-package br.com.chatBotCalculadoraCientifica.controller;
+package br.com.chatBotCalculadoraCientifica.model;
 
 import java.io.File;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.logging.Logger;
 
-import br.com.chatBotCalculadoraCientifica.model.ObjectFactory;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.model.request.ChatAction;
@@ -19,7 +18,7 @@ import com.pengrad.telegrambot.request.SendPhoto;
 import com.pengrad.telegrambot.response.BaseResponse;
 import com.pengrad.telegrambot.response.SendResponse;
 
-public abstract class ControllerBotMessage {
+public abstract class ManagerBotMessage {
 
     private static final Logger LOGGER = Logger.getGlobal();
     private static SendResponse sendResponse;
@@ -79,7 +78,7 @@ public abstract class ControllerBotMessage {
     }
 
     public static void setBotForReading(TelegramBot botForReading) {
-        ControllerBotMessage.botForReading = botForReading;
+        ManagerBotMessage.botForReading = botForReading;
     }
 
     public static void setOffset(int valor) {

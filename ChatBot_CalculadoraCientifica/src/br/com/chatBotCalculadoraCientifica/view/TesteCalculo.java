@@ -1,7 +1,8 @@
 package br.com.chatBotCalculadoraCientifica.view;
 
-import com.deriv.calculator.Calculator;
 import org.mariuszgromada.math.mxparser.Expression;
+
+import com.deriv.calculator.Calculator;
 
 public class TesteCalculo {
 
@@ -13,7 +14,7 @@ public class TesteCalculo {
         try {
 
             Calculator calc2 = new Calculator();
-            System.out.println(calc2.differentiate("tan(2*c^3)", "x").get().toString());
+            System.out.println(calc2.differentiate("tan(2*x^3)", "x").get().toString());
         } catch (Exception e1) {
             System.err.println("Erro");
         }

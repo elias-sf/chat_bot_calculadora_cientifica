@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import br.com.chatBotCalculadoraCientifica.model.ManagerBotMessage;
 import br.com.chatBotCalculadoraCientifica.model.ManagerProperties;
 import br.com.chatBotCalculadoraCientifica.model.ObjectFactory;
 import com.pengrad.telegrambot.TelegramBot;
@@ -35,22 +36,22 @@ public class ControllerBot {
 
         this.bot = new ObjectFactory().getBotInstance();
         // Passa o bot para o gerenciamento do controllerBotMessage
-        ControllerBotMessage.setBotForReading(this.bot);
+        ManagerBotMessage.setBotForReading(this.bot);
         LOGGER.info("[FIM] Bot inicializado");
     }
 
     public void runBot() {
 
         this.mapaMenu = ManagerProperties.menu();
-        ControllerBotMessage.setOffset(0);
-        ControllerBotMessage.setMapaMenu(this.mapaMenu);
+        ManagerBotMessage.setOffset(0);
+        ManagerBotMessage.setMapaMenu(this.mapaMenu);
         ObjectFactory factory = new ObjectFactory();
         this.threadPool = Executors.newCachedThreadPool(factory);
 
         while (true) {
-            List<Update> updates = ControllerBotMessage.getUpdates();
+            List<Update> updates = ManagerBotMessage.getUpdates();
             updates.stream().forEach(update -> {
-                ControllerBotMessage.nextOffset(update);
+                ManagerBotMessage.nextOffset(update);
                 ControlleThread controllerThread = new ControlleThread(update, mapaMenu);
                 threadPool.execute(controllerThread);
 
