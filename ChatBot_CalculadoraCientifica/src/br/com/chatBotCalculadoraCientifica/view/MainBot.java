@@ -4,19 +4,18 @@ import br.com.chatBotCalculadoraCientifica.controller.ControllerBot;
 
 /**
  * classe que inicializa o bot
- * 
+ *
  * @param args
- * 
- * @throws sem exceções
+ * @throws sem exceï¿½ï¿½es
  */
 
 public class MainBot {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		ControllerBot controleBot = new ControllerBot();
-		controleBot.runBot();
+        ControllerBot controleBot = new ControllerBot();
+        controleBot.runBot();
 
-	}
+    }
 
 }
