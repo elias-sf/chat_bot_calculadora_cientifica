@@ -12,53 +12,59 @@ import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Update;
 import org.apache.log4j.Logger;
 
-//import java.util.logging.Logger;
-
 public class ControllerBot {
 
-    /**
-     * classe que que controla as aï¿½ï¿½es do bot
-     *
-     * @param Logger,bot,offset,threadPool,mapaMenu,sendResponse,baseResponse
-     * @throws sem
-     * exceï¿½ï¿½es
-     */
+	/**
+	 * Classe responsável por instanciar o bot do Telegram e iniciar as thread para
+	 * respostas das mensagens
+	 * @param LOGGER,bot-Objeto do Telegram, threadPool-pool de thread, controlas as
+	 * thread executadas, mapaMenu - objeto map com as descrições dos menus de comando
+	 */
 
-    //private static final Logger LOGGER = Logger.getGlobal();
-    private static final Logger LOGGER = Logger.getLogger("botCalculadora");
-    private TelegramBot bot;
-    private ExecutorService threadPool;
-    private Hashtable<String, String> mapaMenu;
+	private static final Logger LOGGER = Logger.getLogger("botCalculadora");
+	private TelegramBot bot;
+	private ExecutorService threadPool;
+	private Hashtable<String, String> mapaMenu;
 
-    public ControllerBot() {
+	/**
+	 * Construtor da classe ControllerBot, ele devolve um objeto do tipo TelegramBot
+	 */
 
-        LOGGER.info("[INICIO] Iniciando o construtor");
+	public ControllerBot() {
 
-        this.bot = new ObjectFactory().getBotInstance();
-        // Passa o bot para o gerenciamento do controllerBotMessage
-        ManagerBotMessage.setBotForReading(this.bot);
-        LOGGER.info("[FIM] Bot inicializado");
-    }
+		LOGGER.info("[INICIO] Iniciando o construtor da ControllerBot");
 
-    public void runBot() {
+		this.bot = new ObjectFactory().getBotInstance();
+		// Passa o bot para o gerenciamento do controllerBotMessage
+		ManagerBotMessage.setBotForReading(this.bot);
 
-        this.mapaMenu = ManagerProperties.menu();
-        ManagerBotMessage.setOffset(0);
-        ManagerBotMessage.setMapaMenu(this.mapaMenu);
-        ObjectFactory factory = new ObjectFactory();
-        this.threadPool = Executors.newCachedThreadPool(factory);
+		LOGGER.info("[FIM] Finalizando o construtor da ControllerBot");
+	}
 
-        while (true) {
-            List<Update> updates = ManagerBotMessage.getUpdates();
-            updates.stream().forEach(update -> {
-                ManagerBotMessage.nextOffset(update);
-                ControlleThread controllerThread = new ControlleThread(update, mapaMenu);
-                threadPool.execute(controllerThread);
+	/**
+	 * Método que roda inicia as thred e a aplicação depois da classe instanciada
+	 */
+	public void runBot() {
 
-            });
+		LOGGER.info("[INICIO] Rodando o método runBot");
 
-        }
+		this.mapaMenu = ManagerProperties.menu();
+		ManagerBotMessage.setOffset(0);
+		ManagerBotMessage.setMapaMenu(this.mapaMenu);
+		ObjectFactory factory = new ObjectFactory();
+		this.threadPool = Executors.newCachedThreadPool(factory);
 
-    }
+		while (true) {
+			List<Update> updates = ManagerBotMessage.getUpdates();
+			updates.stream().forEach(update -> {
+				ManagerBotMessage.nextOffset(update);
+				ControlleThread controllerThread = new ControlleThread(update, mapaMenu);
+				this.threadPool.execute(controllerThread);
+
+			});
+
+		}
+
+	}
 
 }

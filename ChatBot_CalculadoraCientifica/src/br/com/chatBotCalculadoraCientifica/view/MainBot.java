@@ -3,10 +3,7 @@ package br.com.chatBotCalculadoraCientifica.view;
 import br.com.chatBotCalculadoraCientifica.controller.ControllerBot;
 
 /**
- * classe que inicializa o bot
- *
- * @param args
- * @throws sem exceï¿½ï¿½es
+ * Classe Main que inicia a aplicação
  */
 
 public class MainBot {
