@@ -19,12 +19,12 @@ import com.pengrad.telegrambot.response.SendResponse;
 import org.apache.log4j.Logger;
 
 /**
- * Classe responsável pelo gerenciamento das mensagem recebidas e enviadas para o usuário
- * @param LOGGER,sendResponse- objeto que encapsula e envia as mensagem,
- * @param baseResponse- objeto que descreve ao usuário mensagem será enviada,
- * @param botForReading- objeto Telegram para leitura e envio das mensagem,
- * @param offset - vetor para selecionar as mensagem recebidas
- * @param mapaMenu - objeto map com as descrições dos menus de comando
+ * Classe responsável pelo gerenciamento das mensagem recebidas e enviadas para o usuário.
+ * @param LOGGER,sendResponse- objeto que encapsula e envia as mensagem.
+ * @param baseResponse- objeto que descreve ao usuário mensagem será enviada.
+ * @param botForReading- objeto Telegram para leitura e envio das mensagem.
+ * @param offset - vetor para selecionar as mensagem recebidas.
+ * @param mapaMenu - objeto map com as descrições dos menus de comando.
  * 
  */
 
@@ -38,9 +38,9 @@ public abstract class ManagerBotMessage {
     private static Hashtable<String, String> mapaMenu;
     
     /**
-	 * Método que chama o método envia mensagem para usuário
-	 * @param update-objeto com mensgem do usuário 
-	 * @param message-mensagem que será enviada ao usuário
+	 * Método que chama o método envia mensagem para usuário.
+	 * @param update-objeto com mensagem do usuário.
+	 * @param message-mensagem que será enviada ao usuário.
 	 */
 
     public static void sendMessage(String message, Update update) {
@@ -48,11 +48,11 @@ public abstract class ManagerBotMessage {
     }
     
     /**
-   	 * Método que envia mensagem para usuário
-   	 * @param update - objeto com mensgem do usuário, 
-   	 * @param message - mensagem que será enviada ao usuário, 
-   	 * @param keyboard- objeto de mensagem customizada
-   	 * @throws RuntimeException 
+   	 * Método que envia mensagem para usuário.
+   	 * @param update - objeto com mensgem do usuário.
+   	 * @param message - mensagem que será enviada ao usuário. 
+   	 * @param keyboard- objeto de mensagem customizada.
+   	 * @throws RuntimeException. 
    	 */
 
     public synchronized static void sendMessage(String message, Update update, Keyboard keyboard) {
@@ -77,9 +77,9 @@ public abstract class ManagerBotMessage {
     }
 
     /**
-   	 * Método que recupera as repostas enviadas pelo usuário
-   	 * @param update - objeto com mensgem do usuário
-   	 * @return Update
+   	 * Método que recupera as repostas enviadas pelo usuário.
+   	 * @param update - objeto com mensgem do usuário.
+   	 * @return Update.
    	 */
     
     public synchronized static Update readAnswer(Update update) {
@@ -99,8 +99,8 @@ public abstract class ManagerBotMessage {
     }
     
     /**
-   	 * Método que controla o vetor de seleção da lista de mensagens
-   	 * @param update - objeto com mensgem do usuário
+   	 * Método que controla o vetor de seleção da lista de mensagens.
+   	 * @param update - objeto com mensgem do usuário.
    	 */
 
     public static void nextOffset(Update update) {
@@ -108,9 +108,9 @@ public abstract class ManagerBotMessage {
     }
 
     /**
-   	 * Método que recupera as mensagens enviadas pelo usuário
-   	 * @param update-objeto com mensagem do usuário
-   	 * @return List-lista de updates com todas as mensagens enviadas
+   	 * Método que recupera as mensagens enviadas pelo usuário.
+   	 * @param update-objeto com mensagem do usuário.
+   	 * @return List-lista de updates com todas as mensagens enviadas.
    	 */
     
     public synchronized static List<Update> getUpdates() {
@@ -128,9 +128,9 @@ public abstract class ManagerBotMessage {
     }
 
     /**
-   	 * Método que envia a foto solicitado pelo usuário
-   	 * @param update objeto com mensgem do usuário,
-   	 * @param arquivoFoto-foto das equações das expressões matemáticas
+   	 * Método que envia a foto solicitado pelo usuário.
+   	 * @param update objeto com mensgem do usuário.
+   	 * @param arquivoFoto-foto das equações das expressões matemáticas.
    	 */
     public static void enviarFoto(Update update, File arquivoFoto) {
         botForReading.execute(new SendPhoto(update.message().chat().id(),
@@ -138,24 +138,24 @@ public abstract class ManagerBotMessage {
     }
 
     /**
-   	 * Método que retorna objeto TelegramBot
-   	 * @return TelegramBot- objeto do tipo TelegramBot
+   	 * Método que retorna objeto TelegramBot.
+   	 * @return TelegramBot-objeto do tipo TelegramBot.
    	 */
     public static TelegramBot getBotForReading() {
         return botForReading;
     }
 
     /**
-   	 * Método que recebe objeto TelegramBot
-   	 * @param botForReading- objeto do tipo TelegramBot
+   	 * Método que recebe objeto TelegramBot.
+   	 * @param botForReading- objeto do tipo TelegramBot.
    	 */
     public static void setBotForReading(TelegramBot botForReading) {
         ManagerBotMessage.botForReading = botForReading;
     }
     
     /**
-   	 * Método que recebe valor do vetor de mensagens
-   	 * @param valor- valor do ponteiro do vetor
+   	 * Método que recebe valor do vetor de mensagens.
+   	 * @param valor- valor do ponteiro do vetor.
    	 */
     public static void setOffset(int valor) {
         offset = valor;
@@ -170,8 +170,8 @@ public abstract class ManagerBotMessage {
     }
 
     /**
-   	 * Método que recebe objeto menu de comandos do bot
-   	 * @param mapaMenuCarregado-map com todas as informações do menu de comandos
+   	 * Método que recebe objeto menu de comandos do bot.
+   	 * @param mapaMenuCarregado-map com todas as informações do menu de comandos.
    	 */
     public static void setMapaMenu(Hashtable<String, String> mapaMenuCarregado) {
         mapaMenu = mapaMenuCarregado;

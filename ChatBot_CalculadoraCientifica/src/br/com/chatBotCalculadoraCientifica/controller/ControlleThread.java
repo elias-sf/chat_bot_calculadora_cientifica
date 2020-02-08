@@ -10,10 +10,10 @@ import br.com.chatBotCalculadoraCientifica.model.ManagerTask;
 import org.apache.log4j.Logger;
 
 /**
- * Classe responsável por controlar as thread que serão executadas, implementando a interface Runnable
- * @param LOGGER 
- * @param update - objeto com mensgem do usuário
- * @param threadPool-pool de thread
+ * Classe responsável por controlar as thread que serão executadas, implementando a interface Runnable.
+ * @param LOGGER .
+ * @param update - objeto com mensgem do usuário.
+ * @param threadPool-pool de thread.
  */
 
 public class ControlleThread implements Runnable {
@@ -22,10 +22,10 @@ public class ControlleThread implements Runnable {
     private Hashtable<String, String> mapaMenu;
 
 	/**
-	 * Construtor da ControlleThread
-	 * @param update - objeto com mensgem do usuário
-	 * @param threadPool-pool de thread,
-	 * @param mapaMenu - objeto map com as descrições dos menus de comando
+	 * Construtor da ControlleThread.
+	 * @param update - objeto com mensgem do usuário.
+	 * @param threadPool-pool de thread.
+	 * @param mapaMenu - objeto map com as descrições dos menus de comando.
 	 */
     
     public ControlleThread(Update update, Hashtable<String, String> mapaMenu) {
@@ -34,8 +34,8 @@ public class ControlleThread implements Runnable {
     }
 
     /**
-	 * Método que executa cada thread inicializada
-	 * @throws RuntimeException - exceção lançada durante execução 
+	 * Método que executa cada thread inicializada.
+	 * @throws RuntimeException - exceção lançada durante execução. 
 	 */
     @Override
     public void run() {

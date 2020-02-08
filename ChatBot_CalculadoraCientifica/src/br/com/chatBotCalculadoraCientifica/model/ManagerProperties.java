@@ -9,10 +9,9 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 /**
- * Classe responsável por gerenciar e recuperar os arquivos de propriedades
- * respostas das mensagens
- * @param LOGGER
- * @param props - Objeto que le os arquivos de propriedade
+ * Classe responsável por gerenciar e recuperar os arquivos de propriedades respostas das mensagens.
+ * @param LOGGER.
+ * @param props - Objeto que lê os arquivos de propriedade.
  */
 
 public abstract class ManagerProperties {
@@ -21,8 +20,8 @@ public abstract class ManagerProperties {
     private static Properties props = new Properties();
     
     /**
-     * Método responsável por recuperar o token do bot
-     * @return String-informação da chave(id) do bot
+     * Método responsável por recuperar o token do bot.
+     * @return String-informação da chave(id) do bot.
      */
 
     public static String token() throws FileNotFoundException, IOException {
@@ -38,8 +37,8 @@ public abstract class ManagerProperties {
     }
 
     /**
-     * Método responsável por recuperar as informações do menu de comando
-     * @return Hashtable - objeto map com as descrições dos menus de comando
+     * Método responsável por recuperar as informações do menu de comando.
+     * @return Hashtable - objeto map com as descrições dos menus de comando.
      */
     
     public static Hashtable<String, String> menu() {
@@ -69,8 +68,8 @@ public abstract class ManagerProperties {
     }
     
     /**
-     * Método responsável por recuperar a imagem das expressões matemáticas
-     * @return File - retorna a imagem das expressões
+     * Método responsável por recuperar a imagem das expressões matemáticas.
+     * @return File - retorna a imagem das expressões.
      */
     public static File carregarImagem() {
     	LOGGER.info("[INICIO] Rodando o método que carrega imagem das expressões");
@@ -81,7 +80,7 @@ public abstract class ManagerProperties {
     }
 
     /**
-     * Método responsável por recuperar os arquivos de propriedades
+     * Método responsável por recuperar os arquivos de propriedades.
      */
     private static void carregarPropriedades(String caminho) throws FileNotFoundException, IOException {
         props.load(new FileInputStream(caminho));

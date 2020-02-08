@@ -8,7 +8,7 @@ import org.mariuszgromada.math.mxparser.Expression;
 import org.apache.log4j.Logger;
 
 /**
- * Classe responsável pelos calculos solicitado pelo usuário
+ * Classe responsável pelos calculos solicitado pelo usuário.
  */
 
 public class CalculatorBot {
@@ -18,9 +18,9 @@ public class CalculatorBot {
     private String erro = "Erro a executar o calculo, por favor reveja a equacao \n \n ";
 
     /**
-   	 * Método que executa o calculo de cada thread, retornando um valor númerico
-   	 * @param equacao- expressão matemática para ser calculada
-   	 * @param update- objeto com mensgem do usuário
+   	 * Método que executa o calculo de cada thread, retornando um valor númerico.
+   	 * @param equacao- expressão matemática para ser calculada.
+   	 * @param update- objeto com mensgem do usuário.
    	 */
     
 	public synchronized void calculoValor(String equacao, Update update) {
@@ -42,9 +42,9 @@ public class CalculatorBot {
 	}
 	
 	/**
-   	 * Método que executa o calculo de cada thread, retornando um valor simbólico
-   	 * @param equacao- expressão matemática para ser calculada
-   	 * @param update-objeto com mensgem do usuário
+   	 * Método que executa o calculo de cada thread, retornando um valor simbólico.
+   	 * @param equacao- expressão matemática para ser calculada.
+   	 * @param update-objeto com mensgem do usuário.
    	 */
 
     public synchronized void calculoSimbolico(String equacao, Update update) {
@@ -68,7 +68,8 @@ public class CalculatorBot {
     
     /**
    	 * Método que envia o resultado para o usuário.
-   	 * @param resultado- expressão matemática calculada,  update - objeto com mensgem do usuário
+   	 * @param resultado- expressão matemática calculada. 
+   	 * @param update - objeto com mensgem do usuário.
    	 */
 
     private synchronized void enviarResultadoCalculo(String resultado, Update update) {

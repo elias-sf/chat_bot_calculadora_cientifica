@@ -4,7 +4,7 @@ import java.lang.Thread.UncaughtExceptionHandler;
 import org.apache.log4j.Logger;
 
 /**
- * Classe que lança exceção quando acontece algum erro nas thread 
+ * Classe que lança exceção quando acontece algum erro nas thread.
  */
 
 public class ExceptionHandler extends Throwable implements UncaughtExceptionHandler {
@@ -13,8 +13,8 @@ public class ExceptionHandler extends Throwable implements UncaughtExceptionHand
 
     /**
      * Método que recebe a exceção e devolve uma mensagem do erro lançado, mais a pilha da exceção.
-     * @param Thread 
-     * @param Throwable
+     * @param Thread.
+     * @param Throwable.
      */
     
     @Override

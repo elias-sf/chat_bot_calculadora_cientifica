@@ -15,10 +15,10 @@ import org.apache.log4j.Logger;
 public class ControllerBot {
 
 	/**
-	 * Classe responsável por instanciar o bot do Telegram e iniciar as thread para
-	 * respostas das mensagens
-	 * @param LOGGER,bot-Objeto do Telegram, threadPool-pool de thread, controlas as
-	 * thread executadas, mapaMenu - objeto map com as descrições dos menus de comando
+	 * Classe responsável por instanciar o bot do Telegram e iniciar as thread para respostas das mensagens.
+	 * @param LOGGER,bot-Objeto do Telegram.
+	 * @param threadPool-pool de thread, controlas as thread executadas.
+	 * @param mapaMenu - objeto map com as descrições dos menus de comando.
 	 */
 
 	private static final Logger LOGGER = Logger.getLogger("botCalculadora");
@@ -27,7 +27,7 @@ public class ControllerBot {
 	private Hashtable<String, String> mapaMenu;
 
 	/**
-	 * Construtor da classe ControllerBot, ele devolve um objeto do tipo TelegramBot
+	 * Construtor da classe ControllerBot, ele devolve um objeto do tipo TelegramBot.
 	 */
 
 	public ControllerBot() {
@@ -42,7 +42,7 @@ public class ControllerBot {
 	}
 
 	/**
-	 * Método que roda inicia as thred e a aplicação depois da classe instanciada
+	 * Método que roda inicia as thread e a aplicação depois da classe instanciada.
 	 */
 	public void runBot() {
 

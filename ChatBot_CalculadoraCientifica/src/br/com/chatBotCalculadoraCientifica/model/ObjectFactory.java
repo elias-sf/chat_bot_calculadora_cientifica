@@ -10,10 +10,10 @@ import org.apache.log4j.Logger;
 
 
 /**
- * Classe responsável por instanciar os objeto do bot e as thread
- * @param LOGGER
- * @param bot-Objeto do Telegram
- * @param numero - identificador das thread inicializadas
+ * Classe responsável por instanciar os objeto do bot e as thread.
+ * @param LOGGER.
+ * @param bot-Objeto do Telegram.
+ * @param numero - identificador das thread inicializadas.
  */
 
 
@@ -32,9 +32,9 @@ public class ObjectFactory implements ThreadFactory {
     
     
     /**
-	 * Método que cria(instancia) objeto TelegramBot
-	 * @return TelegramBot - objeto TelegramBot para manipulação do chat bot
-	 * @throws RuntimeException - exceção lançada durante execução
+	 * Método que cria(instancia) objeto TelegramBot.
+	 * @return TelegramBot - objeto TelegramBot para manipulação do chat bot.
+	 * @throws RuntimeException - exceção lançada durante execução.
 	 */
     public TelegramBot getBotInstance() {
 
@@ -56,9 +56,9 @@ public class ObjectFactory implements ThreadFactory {
     }
 
     /**
-   	 * Método que cria(instancia) as threads
-   	 * @param tarefa - objeto runnable fornecido para instanciar a thread
-   	 * @return Thread - objeto que executa as tarefas solicitadas
+   	 * Método que cria(instancia) as threads.
+   	 * @param tarefa - objeto runnable fornecido para instanciar a thread.
+   	 * @return Thread - objeto que executa as tarefas solicitadas.
    	 */
     @Override
     public Thread newThread(Runnable tarefa) {
